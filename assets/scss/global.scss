@@ -1,0 +1,151 @@
+$contentWidth: 1440px;
+$mobileBreakpoint: '<lg';
+$col-fixed-width-330: 330px;
+$col-fixed-width-316: 316px;
+
+.col-fixed-width-330 {
+  width: $col-fixed-width-330;
+}
+.col-fixed-width-316 {
+  width: $col-fixed-width-316;
+}
+
+body {
+  background: #ffffff;
+  height: 100vh;
+}
+
+@mixin page-top-gradient {
+  background: linear-gradient(
+    180deg,
+    #f3f3e4 0,
+    #f3f3e4 130px,
+    rgba(255, 255, 255, 0) 720px,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--black300);
+  &.black {
+    background: var(--black);
+  }
+}
+
+.button-pill-icon {
+  .pi {
+    &:before {
+      border: 1px solid var(--black);
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: bold;
+      display: flex;
+    }
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  .content {
+    width: 100%;
+    max-width: $contentWidth;
+    padding: 2.5rem;
+    @include media('<lg') {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  font-family: var(--font-family-header);
+}
+table th,
+table td {
+  padding: calc(var(--inline-spacing) / 4);
+}
+table tr:nth-child(odd) {
+  background-color: var(--black-50);
+}
+table tr:first-child {
+  border-bottom: solid 1px var(--black);
+  background-color: var(--soybean200);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+table tr:last-child:not(.totalline) {
+  border-bottom: solid 1px var(--black);
+}
+table tr.totalline {
+  background-color: var(--white);
+  border-bottom: solid 1px var(--soybean200);
+  border-top: solid 1px var(--black);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* below will eventually go in the theme extentions.scss*/
+
+// marketing alert yellow colors
+$alert-yellow: #f3ed5a;
+:root {
+  --alert-yellow: #{$alert-yellow};
+}
+
+// enlarge image modal zindex to be on top of the AD and below the side menu
+.p-image-mask {
+  z-index: 5010 !important;
+}
+
+// styles to help make links looks like buttons
+a.mod-button {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+a.mod-button:hover {
+  text-decoration: none;
+  color: var(--button-text-hover-color) !important;
+  background: var(--button-hover-bg);
+  border-color: var(--button-hover-border-color);
+}
+
+a.mod-button:active {
+  background: var(--button-active-bg);
+  color: var(--button-text-active-color);
+}
+
+a.mod-button:focus {
+  box-shadow: 0 0 0 0.2rem #d8d7af;
+  outline: 0 none;
+  outline-offset: 0;
+}
+
+a.mod-button.pi {
+  padding: 8px 6px 7px 6px !important;
+}
+
+// Screen reader only, visually hidden text
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.v-card:not([data-style-mode='dark']) {
+  background: transparent;
+}
+.v-card-metadata.article-metadata .comments {
+  min-width: 110px;
+}
