@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { updateLiveStream } from '~~/composables/data/liveStream'
 import { useRuntimeConfig } from '#app'
-import {
-  useCurrentSteamStation,
-} from '~/composables/states'
+import { useCurrentSteamStation } from '~/composables/states'
 
 const currentSteamStation = useCurrentSteamStation()
 const config = useRuntimeConfig()
@@ -13,7 +11,6 @@ const route = useRoute()
 onBeforeMount(() => {
   updateLiveStream(currentSteamStation.value)
 })
-
 </script>
 
 <template>
@@ -24,10 +21,9 @@ onBeforeMount(() => {
           <slot />
         </div>
       </main>
-      <audio-player />
+      <!--  <audio-player /> -->
     </div>
   </div>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

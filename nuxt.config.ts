@@ -30,6 +30,18 @@ export default defineNuxtConfig({
             }
         },
     },
+    imports: {
+        dirs: [
+            'composables', // top-level modules
+            'composables/*/index.{ts,js,mjs,mts}' // one level directories's index.js,
+        ]
+    },
+    build: {
+        transpile: [
+            'primevue',
+            'gsap'
+        ]
+    },
     runtimeConfig: {
         public: {
             LIVESTREAM_URL: process.env['LIVESTREAM_URL'] || 'https://api.demo.nypr.digital/api/v4/whats_on/',

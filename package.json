@@ -14,7 +14,7 @@
     "@nypublicradio/nypr-design-system-vue3": "^1.0.3",
     "howler": "^2.2.3",
     "primeicons": "^6.0.1",
-    "primevue": "^3.22.3",
+    "primevue": "^3.21.0",
     "sass": "^1.57.1"
   }
 }
