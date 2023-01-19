@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    modules: ['@nuxtjs/ionic'],
     css: [
         '@nypublicradio/nypr-design-system-vue3/src/assets/themes/gothamist/fonts/fonts.css',
         '@nypublicradio/nypr-design-system-vue3/src/assets/themes/gothamist/gothamist.min.css',
