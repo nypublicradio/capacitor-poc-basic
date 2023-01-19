@@ -10,7 +10,7 @@ import {
 } from '~/composables/states'
 // had to install howler.js locally and add this import to stop it from breaking the build
 import { Howl, Howler } from 'howler'
-const { $analytics } = useNuxtApp()
+//const { $analytics } = useNuxtApp()
 const currentEpisode = useCurrentEpisode()
 const isEpisodePlaying = useIsEpisodePlaying()
 const togglePlayTrigger = useTogglePlayTrigger()
@@ -20,20 +20,20 @@ const playerRef = ref()
 const playerHeight = ref(audioPlayerHeight + 'px')
 /*function that updated the global useIsEpisodePlaying */
 const updateUseIsEpisodePlaying = (e) => {
-  $analytics.sendEvent('click_tracking', {
-    event_category: 'Click Tracking - Audio Player play toggle button',
-    component: 'Audio Player',
-    event_label: `playing = ${e}`,
-  })
+  // $analytics.sendEvent('click_tracking', {
+  //   event_category: 'Click Tracking - Audio Player play toggle button',
+  //   component: 'Audio Player',
+  //   event_label: `playing = ${e}`,
+  // })
   isEpisodePlaying.value = e
 }
 /*function that updated the global useIsPlayerMinimized */
 const updateUseIsPlayerMinimized = (e) => {
-  $analytics.sendEvent('click_tracking', {
-    event_category: 'Click Tracking - Audio Player minimized',
-    component: 'Audio Player',
-    event_label: `minimized = ${e}`,
-  })
+  // $analytics.sendEvent('click_tracking', {
+  //   event_category: 'Click Tracking - Audio Player minimized',
+  //   component: 'Audio Player',
+  //   event_label: `minimized = ${e}`,
+  // })
   isPlayerMinimized.value = e
 }
 
@@ -74,11 +74,11 @@ let isInitialPing = true
 const pingEvent = () => {
   const station = currentEpisodeData.value.name
   const title = currentEpisodeShow.value.title
-  $analytics.sendEvent('event_tracking', {
-    event_category: 'Ping',
-    component: 'Audio Player',
-    event_label: `${station} - ${title}`,
-  })
+  // $analytics.sendEvent('event_tracking', {
+  //   event_category: 'Ping',
+  //   component: 'Audio Player',
+  //   event_label: `${station} - ${title}`,
+  // })
 }
 watch(isEpisodePlaying, (e) => {
   if (isInitialPing) {

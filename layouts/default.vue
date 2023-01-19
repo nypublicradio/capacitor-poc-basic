@@ -16,12 +16,13 @@ onBeforeMount(() => {
 <template>
   <div class="page" :class="[`${route.name as string}`]">
     <div>
+      <ListenLiveButton class="hidden md:block" :slug="currentSteamStation" />
       <main class="main">
         <div class="default-slot-holder">
           <slot />
         </div>
       </main>
-      <!--  <audio-player /> -->
+      <audio-player />
     </div>
   </div>
 </template>
