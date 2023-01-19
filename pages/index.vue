@@ -1,7 +1,10 @@
 <script setup>
-//import { ref, computed, onMounted } from "vue";
-import { updateLiveStream } from '~~/composables/data/liveStream'
-import { useCurrentSteamStation } from '~/composables/states'
+import { ref, computed, onMounted } from 'vue'
+import { updateLiveStream } from '../composables/data/liveStream'
+import { useCurrentSteamStation } from '../composables/states'
+import ListenLiveButton from '../components/ListenLiveButton.vue'
+import AudioPlayer from '../components/AudioPlayer.vue'
+import testComp from '../components/testComp.vue'
 
 const currentSteamStation = useCurrentSteamStation()
 
@@ -12,9 +15,12 @@ const props = defineProps({
   //   },
 })
 
+const isMounted = ref(false)
+
 //const emit = defineEmits(["change", "click"]);
 // load the life stream
-onBeforeMount(() => {
+onMounted(() => {
+  isMounted.value = true
   updateLiveStream(currentSteamStation.value)
 })
 </script>
@@ -22,9 +28,11 @@ onBeforeMount(() => {
 <template>
   <div>
     <div class="comp-name">
-      <p>Home Page</p>
-      <ListenLiveButton class="hidden md:block" :slug="currentSteamStation" />
+      <p>Home Page UPDATED 9</p>
+      <listen-live-button class="hidden md:block" :slug="currentSteamStation" />
       <p>hello</p>
+      <test-comp />
+      <p v-if="isMounted">MOUNTED</p>
       <audio-player />
     </div>
   </div>

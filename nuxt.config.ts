@@ -7,6 +7,7 @@ export default defineNuxtConfig({
         'primevue/resources/primevue.min.css',
         'primeicons/primeicons.css',
     ],
+    ssr: false,
     vite: {
         css: {
             preprocessorOptions: {
@@ -30,12 +31,6 @@ export default defineNuxtConfig({
                 ]
             }
         },
-    },
-    imports: {
-        dirs: [
-            'composables', // top-level modules
-            'composables/*/index.{ts,js,mjs,mts}' // one level directories's index.js,
-        ]
     },
     build: {
         transpile: [

@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
 import {
   useIsEpisodePlaying,
   useTogglePlayTrigger,
   useCurrentEpisode,
   useCurrentEpisodeHolder,
-} from '~/composables/states'
+} from '../composables/states'
+//import Button from 'primevue/button'
 const props = defineProps({
   label: {
     type: String,
@@ -34,7 +36,10 @@ const togglePlay = () => {
 
 <template>
   <div class="listen-live-button">
-    <Button
+    <p @click="currentEpisodeHolder ? togglePlay() : null">
+      PLAY STREAM - BUTTON
+    </p>
+    <!-- <Button
       class="p-button-rounded p-button-danger w-full flex justify-content-center"
       @click="currentEpisodeHolder ? togglePlay() : null"
     >
@@ -58,7 +63,7 @@ const togglePlay = () => {
         />
         {{ props.label }}
       </div>
-    </Button>
+    </Button> -->
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "nuxt-ionic-project",
-  "webDir": "dist",
+  "appName": "AudioStream",
+  "webDir": ".output/public",
   "bundledWebRuntime": false
 }

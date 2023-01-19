@@ -3,26 +3,26 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxi generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@capacitor/cli": "4.6.2",
-    "@nuxtjs/ionic": "^0.8.0",
+    "@capacitor/cli": "4.6.1",
+    "@nuxtjs/ionic": "0.8.0",
     "nuxt": "^3.0.0"
   },
   "dependencies": {
-    "@capacitor/android": "4.6.2",
+    "@capacitor/android": "4.6.1",
     "@capacitor/app": "4.1.1",
-    "@capacitor/core": "4.6.2",
+    "@capacitor/core": "4.6.1",
     "@capacitor/haptics": "4.1.0",
-    "@capacitor/ios": "4.6.2",
-    "@capacitor/keyboard": "4.1.1",
+    "@capacitor/ios": "4.6.1",
+    "@capacitor/keyboard": "4.1.0",
     "@capacitor/status-bar": "4.1.1",
     "@nypublicradio/nypr-design-system-vue3": "^1.0.3",
     "howler": "^2.2.3",
-    "primeicons": "^6.0.1",
+    "primeicons": "5.0.0",
     "primevue": "^3.21.0",
     "sass": "^1.57.1"
   }
