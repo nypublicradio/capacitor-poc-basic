@@ -6,17 +6,16 @@ import {
   useCurrentEpisode,
   useCurrentEpisodeHolder,
 } from '../composables/states'
-const emit = defineEmits(['stream-button-click'])
 
 const isEpisodePlaying = useIsEpisodePlaying()
 const togglePlayTrigger = useTogglePlayTrigger()
 const currentEpisode = useCurrentEpisode()
 const currentEpisodeHolder = useCurrentEpisodeHolder()
+
 const togglePlay = () => {
   if (!currentEpisode.value) {
     currentEpisode.value = currentEpisodeHolder.value
   }
-  emit('stream-button-click')
   togglePlayTrigger.value = !togglePlayTrigger.value
 }
 const flag = ref(false)
