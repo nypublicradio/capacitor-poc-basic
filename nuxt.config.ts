@@ -1,11 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    modules: ['@nuxtjs/ionic'],
     css: [
         '@nypublicradio/nypr-design-system-vue3/src/assets/themes/gothamist/fonts/fonts.css',
         '@nypublicradio/nypr-design-system-vue3/src/assets/themes/gothamist/gothamist.min.css',
         'primevue/resources/primevue.min.css',
         'primeicons/primeicons.css',
     ],
+    ssr: false,
     vite: {
         css: {
             preprocessorOptions: {
@@ -29,12 +31,6 @@ export default defineNuxtConfig({
                 ]
             }
         },
-    },
-    imports: {
-        dirs: [
-            'composables', // top-level modules
-            'composables/*/index.{ts,js,mjs,mts}' // one level directories's index.js,
-        ]
     },
     build: {
         transpile: [

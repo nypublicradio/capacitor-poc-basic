@@ -1,16 +1,1 @@
-{
-  "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": false,
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "types": [
-      "node",
-      "vitest/globals"
-    ]
-  }
-}
+{ "extends": "./.nuxt/tsconfig.json" }

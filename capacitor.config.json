@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "AudioStream",
+  "webDir": ".output/public",
+  "bundledWebRuntime": false
+}

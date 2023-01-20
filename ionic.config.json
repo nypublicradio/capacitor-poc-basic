@@ -1,0 +1,7 @@
+{
+  "name": "AudioStream",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

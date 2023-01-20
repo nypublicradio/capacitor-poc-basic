@@ -1,28 +1,31 @@
-<script setup lang="ts">
-import { updateLiveStream } from '~~/composables/data/liveStream'
+<script setup>
+import { ref, onMounted } from 'vue'
+//import { updateLiveStream } from '~/composables/data/liveStream'
 import { useRuntimeConfig } from '#app'
 import { useCurrentSteamStation } from '~/composables/states'
-
 const currentSteamStation = useCurrentSteamStation()
+
 const config = useRuntimeConfig()
 const route = useRoute()
 
 // load the life stream
-onBeforeMount(() => {
-  updateLiveStream(currentSteamStation.value)
+onMounted(() => {
+  console.log('template onMounted')
+  //updateLiveStream(currentSteamStation.value)
 })
 </script>
 
 <template>
-  <div class="page" :class="[`${route.name as string}`]">
+  <div class="page">
     <div>
-      <ListenLiveButton class="hidden md:block" :slug="currentSteamStation" />
       <main class="main">
+        <p>TEMPLATE HEADER</p>
         <div class="default-slot-holder">
           <slot />
         </div>
+        <p>TEMPLATE FOOTER</p>
       </main>
-      <audio-player />
+      <!-- <audio-player /> -->
     </div>
   </div>
 </template>
