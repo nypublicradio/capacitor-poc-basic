@@ -1,12 +1,4 @@
-<script setup>
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  console.log(
-    'WHY IS THIS NOT MOUNTING AND NOTHING IN THIS TEMPLATE RENDERING?!?!?'
-  )
-})
-</script>
+<script setup></script>
 
 <template>
   <div class="page">

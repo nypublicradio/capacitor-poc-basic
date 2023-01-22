@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useCurrentSteamStation } from '~/composables/states'
 import { updateLiveStream } from '~/composables/data/liveStream'
 import ListenLiveButton from '~/components/ListenLiveButton.vue'
@@ -17,6 +17,11 @@ onMounted(() => {
     <div class="comp-name">
       <ListenLiveButton class="mt-4 px-3" :slug="currentSteamStation" />
       <audio-player />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   </div>
 </template>
