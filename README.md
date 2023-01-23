@@ -81,27 +81,24 @@ Additional plugins documention can be found [here](https://capacitorjs.com/docs/
 Additional SplashScreen documentation can be found [here](https://capacitorjs.com/docs/apis/splash-screen)
 
 ## Generating Icons and Splash Screens
-add a folder called `resources` to the root of your project. Inside of that folder, add the following folders: `android`and `ios`. In the root of the `public` folder, add the following files: `icon.png` and `splash.png`. 
+In the root of the `public` folder, add the following files: `logo.png`, `icon.png` and `splash.png`. 
 
-add this file to the `resources` folder: `copyToPlatforms.js`
+install this package:
+```bash
+npm install @capacitor/assets
+````
+
+add this file to the `assets` folder: `copyToPlatforms.js`
 
 ```js
 const fs = require('fs')
 
-const images = ['icon.png', 'splash.png']
+const images = ['logo.png', 'splash.png']
 images.forEach((image) => {
     console.log('Copying images to platforms...', image)
-    fs.copyFile(`./public/${image}`, `./resources/${image}`, (err) => {
+    fs.copyFile(`./public/${image}`, `./assets/${image}`, (err) => {
         if (err) throw err
-        console.log(`${image} was copied to resourecs/`)
-    })
-    fs.copyFile(`./public/${image}`, `./resources/ios/${image}`, (err) => {
-        if (err) throw err
-        console.log(`${image} was copied to resourecs/ios/`)
-    })
-    fs.copyFile(`./public/${image}`, `./resources/android/${image}`, (err) => {
-        if (err) throw err
-        console.log(`${image} was copied to resourecs/android/`)
+        console.log(`${image} was copied to assets/`)
     })
 })
 ```
@@ -110,15 +107,15 @@ add the following to the `package.json` file:
 
 ```json
 "scripts": {
-    "update-resources": "node resources/copyToPlatforms.js"
+    "update-resources": "node resources/copyToPlatforms.js && npx capacitor-assets generate"
   }
-```
 ```
 
 Then, to generate all the icons and splash screens for all platforms run the following command:
 ```bash
 npm run update-resources
 ```
+This will create a folder on the root called `icons`
 
 ## Build for Android
 ```bash
@@ -129,6 +126,8 @@ npx cap open android
 `npx cap open android ` will open Android Studio. From there, you can build the app and run it on an emulator or device.
 To build the debug APK file in Android Studio, go to `Build > Build Bundle(s)/APK(s) > Build APK(s)` and follow the instructions.
 To build the production installer APK file in Android Studio, go to `Build > Generate Signed Bundle...` and follow the instructions.
+
+To install the debug APK file on a device, go to `Run > Run 'app'` and follow the instructions.
 
 ## Build for iOS
 ```bash

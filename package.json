@@ -6,7 +6,7 @@
     "generate": "nuxi generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "update-resources": "node resources/copyToPlatforms.js"
+    "update-resources": "node assets/copyToPlatforms.js && npx capacitor-assets generate"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.2",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@capacitor/android": "4.6.2",
     "@capacitor/app": "4.1.1",
+    "@capacitor/assets": "^2.0.4",
     "@capacitor/core": "4.6.2",
     "@capacitor/haptics": "4.1.0",
     "@capacitor/ios": "4.6.2",
