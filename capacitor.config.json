@@ -1,6 +1,13 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "AudioStream",
+  "appId": "com.nypr.wnyc-stream",
+  "appName": "WNYC Stream",
   "webDir": ".output/public",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "backgroundColor": "#d4d4d4",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "backgroundColor": "#e01e3f"
+    }
+  }
 }

@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "generate": "nuxi generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "update-resources": "node resources/copyToPlatforms.js"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.2",
