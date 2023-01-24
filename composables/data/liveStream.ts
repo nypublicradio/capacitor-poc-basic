@@ -11,5 +11,5 @@ export async function updateAllLiveStreams() {
     const config = useRuntimeConfig()
     const allCurrentEpisodes = useAllCurrentEpisodes()
     const data = await $fetch(`${config['LIVESTREAM_URL']}?include=current-airing.image,current-show.show.image,current-episode.segments`)
-    allCurrentEpisodes.value = data
+    allCurrentEpisodes.value = await data
 }
