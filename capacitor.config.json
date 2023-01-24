@@ -10,9 +10,7 @@
       "backgroundColor": "#e01e3f",
       "splashBackgroundColor": "#e01e3f",
       "iconBackgroundColor": "#e01e3f",
-      "splashFullScreen": true,
-      "showSpinner": true,
-      "spinnerColor": "#e6e6e6"
+      "splashFullScreen": true
     }
   }
 }

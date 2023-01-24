@@ -72,6 +72,7 @@ Update the `capacitor.config.json` file to include the following:
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
+      //additional splash screen options here
     }
   }
 }

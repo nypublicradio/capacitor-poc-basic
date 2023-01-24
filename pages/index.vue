@@ -9,7 +9,6 @@ import { Capacitor } from '@capacitor/core'
 const currentSteamStation = useCurrentSteamStation()
 
 onMounted(() => {
-  console.log('index onMounted')
   updateLiveStream(currentSteamStation.value)
 })
 </script>
