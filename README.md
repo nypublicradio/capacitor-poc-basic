@@ -84,6 +84,8 @@ Additional SplashScreen documentation can be found [here](https://capacitorjs.co
 ## Generating Icons and Splash Screens
 In the root of the `public` folder, add the following files: `logo.png`, `icon.png` and `splash.png`. 
 
+You can use these [PSD Templates](https://drive.google.com/drive/folders/1ctIhkcvM2YRDMbMrHUlMmg_xhVe63of0?usp=sharing) to create your splash and icon images.
+
 install this package:
 ```bash
 npm install @capacitor/assets
