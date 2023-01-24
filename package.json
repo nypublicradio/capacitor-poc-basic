@@ -6,7 +6,7 @@
     "generate": "nuxi generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "update-resources": "node assets/copyToPlatforms.js && npx capacitor-assets generate"
+    "generate-splash": "node assets/copyToAssets.js && npx capacitor-assets generate"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.2",

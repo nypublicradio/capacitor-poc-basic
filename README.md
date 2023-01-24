@@ -88,7 +88,7 @@ install this package:
 npm install @capacitor/assets
 ````
 
-add this file to the `assets` folder: `copyToPlatforms.js`
+add this file to the `assets` folder: `copyToAssets.js`
 
 ```js
 const fs = require('fs')
@@ -107,13 +107,13 @@ add the following to the `package.json` file:
 
 ```json
 "scripts": {
-    "update-resources": "node resources/copyToPlatforms.js && npx capacitor-assets generate"
+    "generate-splash": "node resources/copyToAssets.js && npx capacitor-assets generate"
   }
 ```
 
 Then, to generate all the icons and splash screens for all platforms run the following command:
 ```bash
-npm run update-resources
+npm run generate-splash
 ```
 This will create a folder on the root called `icons`
 
