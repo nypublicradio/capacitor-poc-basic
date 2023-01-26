@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1074821598707",
+    "project_id": "wnyc-stream",
+    "storage_bucket": "wnyc-stream.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074821598707:android:b91ffa645a106e33c65686",
+        "android_client_info": {
+          "package_name": "com.nypr.wnyc_stream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074821598707-bro0vokaahhqnmmtc87tq4t6db4jjk36.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnm2-CoJrUt9ZMyVwLBLhyOimiuf7JbYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074821598707-bro0vokaahhqnmmtc87tq4t6db4jjk36.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

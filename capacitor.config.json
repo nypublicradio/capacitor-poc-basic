@@ -1,5 +1,5 @@
 {
-  "appId": "com.nypr.wnyc-stream",
+  "appId": "com.nypr.wnyc_stream",
   "appName": "WNYC Stream",
   "webDir": ".output/public",
   "bundledWebRuntime": false,
@@ -11,6 +11,9 @@
       "splashBackgroundColor": "#e01e3f",
       "iconBackgroundColor": "#e01e3f",
       "splashFullScreen": true
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
     }
   }
 }
