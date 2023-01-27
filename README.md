@@ -42,7 +42,7 @@ npm run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 
-## Learned Instruction for Ionic/Capacitor module for Nuxt 3
+## Learned Instructions for Ionic/Capacitor module for Nuxt 3
 First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started#config) to get everything installed. BUT, do not remove the `App.vue` and replace everything inside of it with the follwoing:
 
 ```html
@@ -72,16 +72,25 @@ Update the `capacitor.config.json` file to include the following:
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
+      //additional splash screen options here
     }
   }
 }
 ```
+
+Find and replace `io.ionic.starter` with `com.nypr.YOURAPPNAME` in the `\android\app\src\main\res\values\strings.xmlstrings.xml` and `\android\app\build.gradle` files.
+
+Find and replace `nuxt-ionic-project` with `YOURAPPNAME` in `\android\app\src\main\res\values\strings.xml` and `\ios\App\App\Info.plist` files.
+
+
 Additional plugins documention can be found [here](https://capacitorjs.com/docs/plugins)
 
 Additional SplashScreen documentation can be found [here](https://capacitorjs.com/docs/apis/splash-screen)
 
 ## Generating Icons and Splash Screens
 In the root of the `public` folder, add the following files: `logo.png`, `icon.png` and `splash.png`. 
+
+You can use these [PSD Templates](https://drive.google.com/drive/folders/1ctIhkcvM2YRDMbMrHUlMmg_xhVe63of0?usp=sharing) to create your splash and icon images.
 
 install this package:
 ```bash
@@ -115,7 +124,7 @@ Then, to generate all the icons and splash screens for all platforms run the fol
 ```bash
 npm run generate-splash
 ```
-This will create a folder on the root called `icons`
+This will create grab the images in your public folder and generate and configure all the icons and splash images in a folder on the root called `icons`
 
 ## Build for Android
 ```bash
@@ -136,3 +145,141 @@ npx cap sync
 npx cap open ios 
 ```
 `npx cap open ios ` will open Xcode. From there, you can build the app and run it on an emulator or device.
+
+
+## Setup for push notifications
+```bash
+npm install @capacitor/push-notifications
+npm i firebase
+npx cap sync
+```
+
+## Update the capacitor.config.json file
+add the following to the `capacitor.config.json` file:
+```json
+ "plugins": {
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  }
+```
+
+## Create custom notification icon:
+Go to this [site](https://romannurik.github.io/AndroidAssetStudio/icons-notification.html) and create a custom notification icon. Be sure to use the name `ic_stat_notification_default`. Make sure your source image is white on a transparent background PNG. Download the zip file and place the 5 folders in the `android\app\src\main\res\` folder.
+
+## Add Meta-data tag to the AndroidManifest.xml
+`/android\app\src\main\AndroidManifest.xml`
+add the following in the `<application>`
+```xml
+<meta-data android:name="com.google.firebase.messaging.default_notification_icon"   android:resource="@drawable/ic_stat_notification_default" />
+```
+
+If you want to add a custome backgorund color to your notification icon, add this as well.
+```xml
+    <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/customColorAccent" tools:replace="android:resource"/>
+```
+
+... then also add the following to the  `<manifest>` tag:
+```xml
+    <manifest xmlns:tools="http://schemas.android.com/tools" >
+```
+
+...then, create a new file in the `android\app\src\main\res\values\` folder called `colors.xml` and add the following (replace the hex code with your color):
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#de1e3d</color>
+    <color name="colorPrimaryDark">#de1e3d</color>
+    <color name="colorAccent">#de1e3d</color>
+    <color name="customColorAccent">#de1e3d</color>
+</resources>
+```
+
+## Set up Firebase Project
+Create a new project in [Firebase](https://console.firebase.google.com/u/2/).
+Make sure the project name is the same as the `appName` in the `capacitor.config.json` file.
+Add and Android app to the project.
+STEP 1: For Android package name, put your appId from the capacitor.config.json file. example `com.nypr.YOURAPPNAME`
+STEP 2: Download the `google-services.json` file and place it in the `android/app` folder.
+STEP 3: Follow the instructions for adding code the 2 build.gradle files
+
+
+## Add Firebase plugin
+Add a file to your project `/plugins/firebase.client.ts` and add the following code & set up the ENV variables:
+
+```js
+import { initializeApp } from 'firebase/app'
+
+export default defineNuxtPlugin(nuxtApp => {
+    const config = useRuntimeConfig()
+
+    const firebaseConfig = {
+        apiKey: config['API_KEY'],
+        projectId: 'YOURAPPNAME',
+        messagingSenderId: config['SENDER_ID'],
+        appId: config['APP_ID'],
+    };
+
+    const app = initializeApp(firebaseConfig)
+})
+```
+
+## Add script to your project
+```js
+
+const addListeners = async () => {
+  await PushNotifications.addListener('registration', (token) => {
+    fcmToken.value = token.value
+    console.info('Registration token: ', token.value)
+  })
+
+  await PushNotifications.addListener('registrationError', (err) => {
+    console.error('Registration error: ', err.error)
+  })
+
+  await PushNotifications.addListener(
+    'pushNotificationReceived',
+    (notification) => {
+      console.log('Push notification received: ', notification)
+    }
+  )
+
+  await PushNotifications.addListener(
+    'pushNotificationActionPerformed',
+    (notification) => {
+      console.log(
+        'Push notification action performed',
+        notification.actionId,
+        notification.inputValue
+      )
+    }
+  )
+}
+
+const registerNotifications = async () => {
+  let permStatus = await PushNotifications.checkPermissions()
+
+  if (permStatus.receive === 'prompt') {
+    permStatus = await PushNotifications.requestPermissions()
+  }
+
+  if (permStatus.receive !== 'granted') {
+    throw new Error('User denied permissions!')
+  }
+
+  await PushNotifications.register()
+}
+
+const getDeliveredNotifications = async () => {
+  const notificationList = await PushNotifications.getDeliveredNotifications()
+  getNotificationList.value = notificationList
+  console.log('delivered notifications', notificationList)
+}
+
+onMounted(() => {
+  registerNotifications()
+  addListeners()
+  getDeliveredNotifications()
+})
+```
+

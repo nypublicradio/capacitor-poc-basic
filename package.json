@@ -11,7 +11,7 @@
   "devDependencies": {
     "@capacitor/cli": "^4.6.2",
     "@nuxtjs/ionic": "^0.8.0",
-    "nuxt": "^3.0.0"
+    "nuxt": "^3.1.1"
   },
   "dependencies": {
     "@capacitor/android": "4.6.2",
@@ -21,8 +21,10 @@
     "@capacitor/haptics": "4.1.0",
     "@capacitor/ios": "4.6.2",
     "@capacitor/keyboard": "4.1.0",
+    "@capacitor/push-notifications": "^4.1.2",
     "@capacitor/status-bar": "4.1.1",
     "@nypublicradio/nypr-design-system-vue3": "^1.0.3",
+    "firebase": "^9.16.0",
     "howler": "^2.2.3",
     "primeicons": "5.0.0",
     "primevue": "^3.21.0",
