@@ -226,6 +226,12 @@ export default defineNuxtPlugin(nuxtApp => {
 
 ## Add script to your project
 ```js
+import { onMounted, ref } from 'vue'
+
+import { PushNotifications } from '@capacitor/push-notifications'
+import { Capacitor } from '@capacitor/core'
+
+const fcmToken = ref('')
 
 const addListeners = async () => {
   await PushNotifications.addListener('registration', (token) => {
@@ -272,7 +278,6 @@ const registerNotifications = async () => {
 
 const getDeliveredNotifications = async () => {
   const notificationList = await PushNotifications.getDeliveredNotifications()
-  getNotificationList.value = notificationList
   console.log('delivered notifications', notificationList)
 }
 
@@ -281,5 +286,25 @@ onMounted(() => {
   addListeners()
   getDeliveredNotifications()
 })
+
+<template>
+  <div>
+    <div>
+      <p>fcm token =</p>
+      <input :value="fcmToken" />
+    </div>
+  </div>
+</template>
+
 ```
 
+## setup a notification in Firebase
+Go to the [Messaging tab](https://console.firebase.google.com/u/2/project/wnyc-stream/messaging) in Firebase and create a New Campaign.
+
+follow the steps
+
+To `Send test message`, got to step 1 (Notification) and click on the button on the right.
+
+You need to add a FCM registration token. This token is populated in the input filed that we added in the code above. Copy the token and paste it in the input field, then press the PLUS icon to add it.
+
+Then, click on the `Test` button. Your device should get the nortification, it can take a few seconds sometimes. 
