@@ -165,14 +165,44 @@ add the following to the `capacitor.config.json` file:
 ```
 
 ## Create custom notification icon:
-Go to this [site](https://romannurik.github.io/AndroidAssetStudio/icons-notification.html) and create a custom notification icon. Make sure your source image is white on a transparent background PNG. Download the zip file and place the 5 folders in the `android\app\src\main\res\` folder.
+Go to this [site](https://romannurik.github.io/AndroidAssetStudio/icons-notification.html) and create a custom notification icon. Be sure to use the name `ic_stat_notification_default`. Make sure your source image is white on a transparent background PNG. Download the zip file and place the 5 folders in the `android\app\src\main\res\` folder.
 
+## Add Meta-data tag to the AndroidManifest.xml
+`/android\app\src\main\AndroidManifest.xml`
+add the following in the `<application>`
+```xml
+<meta-data android:name="com.google.firebase.messaging.default_notification_icon"   android:resource="@drawable/ic_stat_notification_default" />
+```
+
+If you want to add a custome backgorund color to your notification icon, add this as well.
+```xml
+    <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/customColorAccent" tools:replace="android:resource"/>
+```
+
+... then also add the following to the  `<manifest>` tag:
+```xml
+    <manifest xmlns:tools="http://schemas.android.com/tools" >
+```
+
+...then, create a new file in the `android\app\src\main\res\values\` folder called `colors.xml` and add the following (replace the hex code with your color):
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#de1e3d</color>
+    <color name="colorPrimaryDark">#de1e3d</color>
+    <color name="colorAccent">#de1e3d</color>
+    <color name="customColorAccent">#de1e3d</color>
+</resources>
+```
+
+## Set up Firebase Project
 Create a new project in [Firebase](https://console.firebase.google.com/u/2/).
 Make sure the project name is the same as the `appName` in the `capacitor.config.json` file.
 Add and Android app to the project.
 STEP 1: For Android package name, put your appId from the capacitor.config.json file. example `com.nypr.YOURAPPNAME`
 STEP 2: Download the `google-services.json` file and place it in the `android/app` folder.
 STEP 3: Follow the instructions for adding code the 2 build.gradle files
+
 
 ## Add Firebase plugin
 Add a file to your project `/plugins/firebase.client.ts` and add the following code & set up the ENV variables:
