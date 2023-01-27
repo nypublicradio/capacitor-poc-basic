@@ -303,8 +303,9 @@ Go to the [Messaging tab](https://console.firebase.google.com/u/2/project/wnyc-s
 
 follow the steps
 
-To `Send test message`, got to step 1 (Notification) and click on the button on the right.
+## Test the notification
+To send test message, go to step 1 (Notification) and click on the button on the right.
 
-You need to add a FCM registration token. This token is populated in the input filed that we added in the code above. Copy the token and paste it in the input field, then press the PLUS icon to add it.
+You need to add a FCM registration token. This token is populated in the input filed that we added in the code above. Copy the token and paste it in the notification input field, then press the PLUS icon on the right to add it.
 
 Then, click on the `Test` button. Your device should get the nortification, it can take a few seconds sometimes. 
