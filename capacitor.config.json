@@ -1,6 +1,6 @@
 {
   "appId": "com.nypr.wnyc_stream",
-  "appName": "WNYC Stream",
+  "appName": "WNYC-Stream",
   "webDir": ".output/public",
   "bundledWebRuntime": false,
   "backgroundColor": "#d4d4d4",
