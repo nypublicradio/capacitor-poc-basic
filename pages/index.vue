@@ -9,7 +9,14 @@ import { Capacitor } from '@capacitor/core'
 
 const currentSteamStation = useCurrentSteamStation()
 
+const router = useRouter()
+
 const fcmToken = ref('')
+const nUrl = ref(null)
+const nError = ref(null)
+const nNotification = ref(null)
+const nActionId = ref(null)
+const nInputValue = ref(null)
 const getNotificationList = ref(null)
 
 const addListeners = async () => {
@@ -19,12 +26,14 @@ const addListeners = async () => {
   })
 
   await PushNotifications.addListener('registrationError', (err) => {
+    nError.value = err
     console.error('Registration error: ', err.error)
   })
 
   await PushNotifications.addListener(
     'pushNotificationReceived',
     (notification) => {
+      nNotification.value = notification
       console.log('Push notification received: ', notification)
     }
   )
@@ -32,13 +41,32 @@ const addListeners = async () => {
   await PushNotifications.addListener(
     'pushNotificationActionPerformed',
     (notification) => {
+      nActionId.value = notification.actionId
+      nInputValue.value = notification.inputValue
       console.log(
         'Push notification action performed',
         notification.actionId,
         notification.inputValue
       )
+      if (notification.actionId === tap) {
+        router.push(nNotification.value.slug)
+        //navigateTo(nNotification.value.slug)
+      }
     }
   )
+  await PushNotifications.addListener('appUrlOpen', function (event) {
+    nUrl.value = event
+    // Example url: https://beerswift.app/tabs/tabs2
+    // slug = /tabs/tabs2
+    const slug = event.url.split('.app').pop()
+
+    // We only push to the route if there is a slug present
+    if (slug) {
+      router.push({
+        path: slug,
+      })
+    }
+  })
 }
 
 const registerNotifications = async () => {
@@ -67,6 +95,9 @@ onMounted(() => {
   addListeners()
   getDeliveredNotifications()
 })
+const gotoPage = (page) => {
+  router.push(page)
+}
 </script>
 
 <template>
@@ -74,6 +105,11 @@ onMounted(() => {
     <div class="comp-name px-3">
       <p>fcm token =</p>
       <input :value="fcmToken" />
+      <p>url = {{ nUrl }}</p>
+      <p>Notification = {{ nNotification }}</p>
+      <p>nActionId = {{ nActionId }}</p>
+      <p>nInputValue = {{ nInputValue }}</p>
+      <p>nError = {{ nError }}</p>
       <p>notificationList = {{ notificationList }}</p>
       <ListenLiveButton class="mt-4" :slug="currentSteamStation" />
       <audio-player />
@@ -84,6 +120,10 @@ onMounted(() => {
         isPluginAvailable('Camera') =
         {{ Capacitor.isPluginAvailable('Camera') }}
       </h6>
+      <a href="/notification-page">go to notification-page</a>
+      <button @click="gotoPage('notification-page')">
+        go to notification-page
+      </button>
     </div>
   </div>
 </template>
