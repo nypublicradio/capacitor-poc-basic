@@ -1,4 +1,7 @@
 {
+  "name": "com.nypr.wnyc_stream",
+  "version": "1.0.0",
+  "homepage": "",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -10,7 +13,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.2",
-    "@nuxtjs/ionic": "^0.8.0",
+    "@nuxtjs/ionic": "^0.8.1",
     "nuxt": "^3.1.1"
   },
   "dependencies": {

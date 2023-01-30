@@ -1,5 +1,5 @@
 {
-  "name": "AudioStream",
+  "name": "com.nypr.wnyc_stream",
   "integrations": {
     "capacitor": {}
   },
