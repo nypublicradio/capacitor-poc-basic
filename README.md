@@ -47,18 +47,29 @@ First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started#c
 
 ```html
 <script setup>
-import { IonApp, IonRouterOutlet } from '@ionic/vue'
+import { IonApp } from '@ionic/vue'
 </script>
 <template>
   <ion-app>
     <NuxtLayout>
-      <ion-router-outlet class="relative" />
+      <NuxtPage />
     </NuxtLayout>
   </ion-app>
 </template>
 
 ```
-`class="relative"` can be replaced with `style="position: relative"` 
+
+## Update ionic.config.json
+Update the `ionic.config.json` file to include the following:
+```json
+{
+  "name": "com.nypr.YOURAPPNAME",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
+```
 
 ## Update capacitor.config.json
 Update the `capacitor.config.json` file to include the following:
