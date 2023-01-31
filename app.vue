@@ -1,16 +1,11 @@
 <script setup>
-import { IonApp, IonRouterOutlet, IonPage } from '@ionic/vue'
+import { IonApp, IonRouterOutlet } from '@ionic/vue'
 </script>
 <template>
   <ion-app>
     <NuxtLayout>
-      <ion-router-outlet class="relative">
-        <ion-page>
-          <ion-content>
-            <Nuxt />
-          </ion-content>
-        </ion-page>
-      </ion-router-outlet>
+      <NuxtPage />
+      <!-- <ion-router-outlet class="relative"></ion-router-outlet> -->
     </NuxtLayout>
   </ion-app>
 </template>
