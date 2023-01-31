@@ -7,7 +7,10 @@ export default defineNuxtConfig({
         'primevue/resources/primevue.min.css',
         'primeicons/primeicons.css',
     ],
-    //ssr: false,
+    ssr: false,
+    experimental: {
+        externalVue: true,
+    },
     vite: {
         css: {
             preprocessorOptions: {

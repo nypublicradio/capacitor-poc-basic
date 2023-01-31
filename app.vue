@@ -4,7 +4,8 @@ import { IonApp, IonRouterOutlet } from '@ionic/vue'
 <template>
   <ion-app>
     <NuxtLayout>
-      <ion-router-outlet class="relative" />
+      <NuxtPage />
+      <!-- <ion-router-outlet class="relative"></ion-router-outlet> -->
     </NuxtLayout>
   </ion-app>
 </template>
