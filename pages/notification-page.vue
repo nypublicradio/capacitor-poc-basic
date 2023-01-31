@@ -3,9 +3,8 @@
 <template>
   <div class="comp-name">
     <h2>This is the page the notification sent us to!</h2>
-    <a href="/">go home HREF </a>
     <br />
-    <nuxt-link to="/">go home NUXT</nuxt-link>
+    <nuxt-link to="/">go home</nuxt-link>
   </div>
 </template>
 

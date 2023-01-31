@@ -19,6 +19,7 @@ const nNotification = ref(null)
 const nActionId = ref(null)
 const nInputValue = ref(null)
 const getNotificationList = ref(null)
+const routeSlugEvent = ref('')
 
 const addListeners = async () => {
   await PushNotifications.addListener('registration', (token: any) => {
@@ -34,7 +35,8 @@ const addListeners = async () => {
   await PushNotifications.addListener(
     'pushNotificationReceived',
     (notification: any) => {
-      nNotification.value = notification
+      nNotification.value = notification.data.slug
+      //router.push({ path: `/${notification.data.slug}` })
       console.log('Push notification received: ', notification)
     }
   )
@@ -49,17 +51,17 @@ const addListeners = async () => {
         notification.actionId,
         notification.inputValue
       )
-      if (notification.actionId === 'tap') {
-        router.push(`/${nNotification.value.slug}`)
+      if (notification.actionId === 'tap' && nNotification.value !== null) {
+        router.push(`/${nNotification.value}`)
         //navigateTo(nNotification.value.slug)
       }
     }
   )
-  App.addListener('appUrlOpen', function (event: URLOpenListenerEvent) {
+  await App.addListener('appUrlOpen', function (event: URLOpenListenerEvent) {
     // Example url: https://beerswift.app/tabs/tabs2
     // slug = /tabs/tabs2
     const slug = event.url.split('.app').pop()
-
+    routeSlugEvent.value = event.url
     // We only push to the route if there is a slug present
     if (slug) {
       router.push({ path: slug })
@@ -87,7 +89,7 @@ const getDeliveredNotifications = async () => {
   console.log('delivered notifications', notificationList)
 }
 
-onMounted(() => {
+onBeforeMount(() => {
   updateLiveStream(currentSteamStation.value)
   if (Capacitor.getPlatform() !== 'web') {
     registerNotifications()
@@ -101,7 +103,9 @@ onMounted(() => {
   <div class="comp-name px-3">
     <p>fcm token =</p>
     <input :value="fcmToken" />
+    <pre></pre>
     <p>url = {{ nUrl }}</p>
+    <p>routeSlugEvent = {{ routeSlugEvent }}</p>
     <p>Notification = {{ nNotification }}</p>
     <p>nActionId = {{ nActionId }}</p>
     <p>nInputValue = {{ nInputValue }}</p>
@@ -116,11 +120,8 @@ onMounted(() => {
       isPluginAvailable('Camera') =
       {{ Capacitor.isPluginAvailable('Camera') }}
     </h6>
-    <a href="/notification-page">go to notification-page HREF</a>
     <br />
-    <nuxt-link to="/notification-page">
-      go to notification-page NUXT
-    </nuxt-link>
+    <nuxt-link to="/notification-page"> go to notification-page </nuxt-link>
   </div>
 </template>
 
