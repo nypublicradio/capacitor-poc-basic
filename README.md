@@ -134,7 +134,7 @@ add the following to the `package.json` file:
 
 ```json
 "scripts": {
-    "generate-splash": "node resources/copyToAssets.js && npx capacitor-assets generate"
+    "generate-splash": "node assets/copyToAssets.js && npx capacitor-assets generate"
   }
 ```
 
