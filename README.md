@@ -144,6 +144,13 @@ npm run generate-splash
 ```
 This will create grab the images in your public folder and generate and configure all the icons and splash images in a folder on the root called `icons`
 
+If the `generate` script is not set up, add it to yout `package.json` file:
+```json
+"scripts": {
+    "generate": "nuxi generate",
+  }
+```
+
 ## Build for Android
 ```bash
 npm run gererate
