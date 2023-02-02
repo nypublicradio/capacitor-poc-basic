@@ -50,7 +50,7 @@ if the `ionic.config.json` does not appear when running the first time, run the 
 ionic init
 ```
 
-If yout default.vue layout is not rendering, add a `App.vue` to the root and add the follwoing:
+If your default.vue layout is not rendering, add a `App.vue` to the root and add the follwoing:
 
 ```html
 <script setup>
