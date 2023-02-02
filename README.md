@@ -96,7 +96,7 @@ Update the `capacitor.config.json` file to include the following:
 }
 ```
 
-Find and replace `io.ionic.starter` with `com.nypr.YOURAPPNAME` in the `\android\app\src\main\res\values\strings.xmlstrings.xml` and `\android\app\build.gradle` files.
+Find and replace `io.ionic.starter` with `com.nypr.YOURAPPNAME` in the `\android\app\src\main\res\values\strings.xml` and `\android\app\build.gradle` files.
 
 Find and replace `nuxt-ionic-project` with `YOURAPPNAME` in `\android\app\src\main\res\values\strings.xml` and `\ios\App\App\Info.plist` files.
 
