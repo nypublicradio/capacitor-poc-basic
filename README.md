@@ -43,7 +43,12 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 
 ## Learned Instructions for Ionic/Capacitor module for Nuxt 3
-First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started#config) to get everything installed. BUT, do not remove the `App.vue` and replace everything inside of it with the follwoing:
+First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started) to get everything installed. BUT, do not remove the `App.vue` and replace everything inside of it with the follwoing:
+
+if the `ionic.config.json` does not appear when running the first time, run the following init
+```bash
+ionic init
+```
 
 ```html
 <script setup>
