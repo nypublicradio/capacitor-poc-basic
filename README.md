@@ -163,6 +163,9 @@ To build the production installer APK file in Android Studio, go to `Build > Gen
 
 To install the debug APK file on a device, go to `Run > Run 'app'` and follow the instructions.
 
+
+## Setup for iOS
+
 ## Build for iOS
 ```bash
 npm run gererate
