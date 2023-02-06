@@ -165,6 +165,14 @@ To install the debug APK file on a device, go to `Run > Run 'app'` and follow th
 
 
 ## Setup for iOS
+in terminal install Homebrew:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+then install cocoaPods:
+```bash
+brew install cocoapods
+```
 
 ## Build for iOS
 ```bash

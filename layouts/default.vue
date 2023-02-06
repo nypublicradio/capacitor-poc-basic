@@ -102,7 +102,7 @@ onBeforeMount(() => {
     <div>
       <main class="main">
         <p>TEMPLATE HEADER</p>
-        <p>fcm token =</p>
+        <p>fcm token ==</p>
         <input :value="fcmToken" />
         <pre></pre>
         <p>url = {{ nUrl }}</p>
