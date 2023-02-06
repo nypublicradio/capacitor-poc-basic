@@ -18,6 +18,7 @@ const nActionId = ref(null)
 const nInputValue = ref(null)
 const getNotificationList = ref(null)
 const routeSlugEvent = ref('')
+const appLaunchUrl = ref(null)
 
 const addListeners = async () => {
   await PushNotifications.addListener('registration', (token: any) => {
@@ -65,6 +66,13 @@ const addListeners = async () => {
       router.push({ path: slug })
     }
   })
+  await App.addListener('appStateChange', ({ isActive }) => {
+    console.log('App state changed. Is active?', isActive)
+  })
+
+  await App.addListener('appRestoredResult', (data) => {
+    console.log('Restored state:', data)
+  })
 }
 
 const registerNotifications = async () => {
@@ -87,13 +95,20 @@ const getDeliveredNotifications = async () => {
   console.log('delivered notifications', notificationList)
 }
 
+const checkAppLaunchUrl = async () => {
+  const { url } = await App.getLaunchUrl()
+  appLaunchUrl.value = url
+  console.log('App opened with URL: ' + url)
+}
+
 onBeforeMount(() => {
   updateLiveStream(currentSteamStation.value)
-  //if (Capacitor.getPlatform() !== 'web') {
+  if (Capacitor.getPlatform() !== 'web') {
     registerNotifications()
     addListeners()
     getDeliveredNotifications()
-  //}
+    checkAppLaunchUrl()
+  }
 })
 </script>
 
@@ -106,6 +121,7 @@ onBeforeMount(() => {
         <input :value="fcmToken" />
         <pre></pre>
         <p>url = {{ nUrl }}</p>
+        <p>appLaunchUrl = {{ appLaunchUrl }}</p>
         <p>routeSlugEvent = {{ routeSlugEvent }}</p>
         <p>Notification = {{ nNotification }}</p>
         <p>nActionId = {{ nActionId }}</p>
