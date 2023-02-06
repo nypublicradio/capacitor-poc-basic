@@ -89,11 +89,11 @@ const getDeliveredNotifications = async () => {
 
 onBeforeMount(() => {
   updateLiveStream(currentSteamStation.value)
-  if (Capacitor.getPlatform() !== 'web') {
+  //if (Capacitor.getPlatform() !== 'web') {
     registerNotifications()
     addListeners()
     getDeliveredNotifications()
-  }
+  //}
 })
 </script>
 
