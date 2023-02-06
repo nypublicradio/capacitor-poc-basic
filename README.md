@@ -334,7 +334,7 @@ const getDeliveredNotifications = async () => {
 }
 
 const checkAppLaunchUrl = async () => {
-  const { url } = await App.getLaunchUrl()
+  const url = await App.getLaunchUrl()
   console.log('App opened with URL: ' + url)
 }
 
@@ -381,13 +381,15 @@ Add the following to the `activity` section in the `AndroidManifest.xml` file in
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
-    <data android:scheme="@string/custom_url_scheme" />
+    <!-- the line below stopped the click on the notification from working -->
+    <!-- <data android:scheme="@string/custom_url_scheme" /> -->
 </intent-filter>
 ```
 
 ## Enable the iOS Push Notifications
 On iOS you must enable the Push Notifications capability. To add a new capability, open your app in Xcode, select the `App` project and the `App target`, click `Signing & Capabilities` in the tab bar, and then click the + Capability button (it may look disabled). Select `Push Notifications` by double clicking it. See [this article](https://developer.apple.com/documentation/xcode/adding_capabilities_to_your_app) for more information about iOS capabilities.
 
+This will update the `project.pbxproj` file in the `ios/App/App.xcodeproj` folder. You will need to commit this file to your repository.
 
 ## setup a notification in Firebase
 Go to the [Messaging tab](https://console.firebase.google.com/u/2/project/wnyc-stream/messaging) in Firebase and create a New Campaign.

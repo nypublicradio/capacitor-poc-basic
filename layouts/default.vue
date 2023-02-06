@@ -96,7 +96,7 @@ const getDeliveredNotifications = async () => {
 }
 
 const checkAppLaunchUrl = async () => {
-  const { url } = await App.getLaunchUrl()
+  const url = await App.getLaunchUrl()
   appLaunchUrl.value = url
   console.log('App opened with URL: ' + url)
 }
