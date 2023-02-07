@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">WNYC-Stream</string>
     <string name="title_activity_main">WNYC-Stream</string>
-    <string name="package_name">com.nypr.wnyc_stream</string>
-    <string name="custom_url_scheme">com.nypr.wnyc_stream</string>
+    <string name="package_name">org.wnyc.developoment</string>
+    <string name="custom_url_scheme">org.wnyc.developoment</string>
 </resources>

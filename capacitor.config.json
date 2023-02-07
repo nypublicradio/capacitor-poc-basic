@@ -1,5 +1,5 @@
 {
-  "appId": "com.nypr.wnyc_stream",
+  "appId": "org.wnyc.developoment",
   "appName": "WNYC-Stream",
   "webDir": ".output/public",
   "bundledWebRuntime": false,
