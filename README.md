@@ -386,10 +386,25 @@ Add the following to the `activity` section in the `AndroidManifest.xml` file in
 </intent-filter>
 ```
 
+## Xcode setup
+
+
+
 ## Enable the iOS Push Notifications
 On iOS you must enable the Push Notifications capability. To add a new capability, open your app in Xcode, select the `App` project and the `App target`, click `Signing & Capabilities` in the tab bar, and then click the + Capability button (it may look disabled). Select `Push Notifications` by double clicking it. See [this article](https://developer.apple.com/documentation/xcode/adding_capabilities_to_your_app) for more information about iOS capabilities.
 
 This will update the `project.pbxproj` file in the `ios/App/App.xcodeproj` folder. You will need to commit this file to your repository.
+
+Add the following to the `AppDelegate.swift` file in the `ios/App/App` folder:
+```swift
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    NotificationCenter.default.post(name: .capacitorDidRegisterForRemoteNotifications, object: deviceToken)
+  }
+
+  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    NotificationCenter.default.post(name: .capacitorDidFailToRegisterForRemoteNotifications, object: error)
+  }
+```
 
 ## setup a notification in Firebase
 Go to the [Messaging tab](https://console.firebase.google.com/u/2/project/wnyc-stream/messaging) in Firebase and create a New Campaign.
