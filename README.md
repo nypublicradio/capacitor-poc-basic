@@ -43,7 +43,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 
 ## Learned Instructions for Ionic/Capacitor module for Nuxt 3
-First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started) to get everything installed. 
+First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started) to get everything installed, enabling Capacitor and adding ios and android. 
 
 if the `ionic.config.json` does not appear when running the first time, run the following init
 ```bash
@@ -147,7 +147,7 @@ This will create grab the images in your public folder and generate and configur
 If the `generate` script is not set up, add it to yout `package.json` file:
 ```json
 "scripts": {
-    "generate": "nuxi generate",
+    "generate": "nuxt generate",
   }
 ```
 
@@ -187,7 +187,6 @@ npx cap open ios
 ```bash
 npm install @capacitor/push-notifications
 npm i firebase
-npx cap sync
 ```
 
 ## Update the capacitor.config.json file
@@ -220,14 +219,11 @@ If you want to add a custome backgorund color to your notification icon, add thi
     <manifest xmlns:tools="http://schemas.android.com/tools" >
 ```
 
-...then, create a new file in the `android\app\src\main\res\values\` folder called `colors.xml` and add the following (replace the hex code with your color):
+...then, create a new file in the `android\app\src\main\res\` folder called `colors.xml` and add the following (replace the hex code with your color):
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#de1e3d</color>
-    <color name="colorPrimaryDark">#de1e3d</color>
     <color name="colorAccent">#de1e3d</color>
-    <color name="customColorAccent">#de1e3d</color>
 </resources>
 ```
 
