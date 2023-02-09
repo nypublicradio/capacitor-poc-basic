@@ -184,7 +184,7 @@ npx cap sync
 npx cap open android 
 ```
 `npx cap open android ` will open Android Studio. From there, you can build the app and run it on an emulator or device.
-You may be prompted to update Gradle. If so, do so and follow the instructions to update it.
+In the lower right of Android Studio, you may be prompted to update Gradle. If so, do so and follow the instructions to update it.
 To build the debug APK file in Android Studio, go to `Build > Build Bundle(s)/APK(s) > Build APK(s)` and follow the instructions.
 To build the production installer APK file in Android Studio, go to `Build > Generate Signed Bundle...` and follow the instructions.
 
