@@ -13,6 +13,10 @@ $col-fixed-width-316: 316px;
 body {
   background: #ffffff;
   height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: none;
 }
 
 @mixin page-top-gradient {
