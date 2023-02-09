@@ -61,20 +61,28 @@ if the `ionic.config.json` does not appear when running the first time, run the 
 ionic init
 ```
 
-If your default.vue layout is not rendering, add a `App.vue` to the root and add the follwoing:
+If your default.vue layout is not rendering, add a `App.vue` to the root and add the following:
 
 ```html
 <script setup>
 import { IonApp } from '@ionic/vue'
 </script>
 <template>
-  <ion-app>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </ion-app>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
+```
+if you added an `App.vue` file, add the following to your global css file:
+
+```css
+body { 
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: none;
+}
 ```
 
 ## SSR setup
@@ -246,12 +254,16 @@ If you want to add a custome backgorund color to your notification icon, add thi
     <manifest xmlns:tools="http://schemas.android.com/tools" >
 ```
 
-...then, create a new file in the `android\app\src\main\res\` folder called `colors.xml` and add the following (replace the hex code with your color):
+...then, create a new file in the `android\app\src\main\res\values` folder called `colors.xml` and add the following (replace the hex code with your color):
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#de1e3d</color>
+    <color name="colorPrimaryDark">#de1e3d</color>
     <color name="colorAccent">#de1e3d</color>
+    <color name="customColorAccent">#de1e3d</color>
 </resources>
+
 ```
 
 ## Set up Firebase Project
