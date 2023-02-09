@@ -66,6 +66,21 @@ import { IonApp } from '@ionic/vue'
 
 ```
 
+## SSR setup
+We want SSR to run on the web, but not on the native app. To do this,
+
+add the following var to the `.env` file:
+```bash
+ISAPP='false'
+```
+
+then, add the following to the `nuxt.config.js` file:
+
+```js
+ssr: process.env.ISAPP === 'false' ? true : false,
+```
+Not sure how to change this when generating the app, but it should be possible.
+
 ## Update ionic.config.json
 Update the `ionic.config.json` file to include the following:
 ```json
