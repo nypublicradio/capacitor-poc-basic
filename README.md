@@ -43,7 +43,18 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 
 ## Learned Instructions for Ionic/Capacitor module for Nuxt 3
-First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started) to get everything installed, enabling Capacitor and adding ios and android. 
+First, follow the [instructions here](https://ionic.nuxtjs.org/getting-started) to get everything installed and enabling Capacitor 
+
+Before you install iOS and Android, run a generate once
+```bash
+npm run generate
+```
+Then follow the instructions to add ios and android. 
+
+run dev to generate the `ionic.config.json` file
+```bash
+npm run dev
+```
 
 if the `ionic.config.json` does not appear when running the first time, run the following init
 ```bash
@@ -269,6 +280,19 @@ export default defineNuxtPlugin(nuxtApp => {
 
     const app = initializeApp(firebaseConfig)
 })
+```
+
+Be sure to check that all these packages are installed. They should be, but just double check at this point in the process:
+```bash
+  "@capacitor/android": "4.6.2",
+  "@capacitor/app": "4.1.1",
+  "@capacitor/assets": "^2.0.4",
+  "@capacitor/core": "4.6.2",
+  "@capacitor/haptics": "4.1.0",
+  "@capacitor/ios": "4.6.2",
+  "@capacitor/keyboard": "4.1.0",
+  "@capacitor/push-notifications": "^4.1.2",
+  "@capacitor/status-bar": "4.1.1",
 ```
 
 ## Add script to your project (default.vue layout is prob best)
